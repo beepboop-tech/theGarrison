@@ -1,35 +1,54 @@
+from abc import ABC, abstractmethod
+
 class Trolley():
+    def __init__(self, homePosition=0):
+        self.resetPosition()
+        self.currentPosition = 0
+        self.homePosition = homePosition
+        self.observers = []
+        self.goHome()
 
-    def __init__(self):
-        self.queue = []                                                         # [(position, completedMove, finished)]
-        self.queueIndex = None
-
-    def press(self, completedPress):
-        # TODO: Press the actuator
-        completedPress()
-
-    def done(self):
-        self.queue[self.queueIndex][2] = True                                   # Sets the flag in the current queue entry to be False
-        if (any(map(lambda p, c, f: f==False, self.queue))):
-            nextMove()
+    # Adds observer as an observer of the trolley. It will be notified when the
+    # trolley moves home, and finishes a move.
+    def resgisterObserver(self, observer):
+        if (issubclass(type(observer), TrolleyObserver)):
+            self.observers.append(observer)
         else:
-            # move(0, lambda : print "Done")
-            # nextMove() # TODO HACK NOTE This needs call move and NextMove
-            pass
+            raise TypeError("observer must be a TrolleyObserver.")
+
+    # NOTE: This should block as the current position is initialised to zero
+    # afterwards.
+    def resetPosition(self):
+        # Go left until a button is pressed.
+        pass
+
+    # Moves to position.
+    def __moveTo(self, position, isHome=False):
+        # Use motor...
+        for observer in self.observers:
+            if isHome:
+                observer.trolleyMovedHome(self)
+            else:
+                observer.trolleyFinishedMove(self)
+
+    def goHome(self):
+        self.__moveTo(self.homePosition, isHome=True)
+
+    def moveTo(self, position):
+        self.__moveTo(position)
+
+    def safeToMove(self):
+        # return buttonIsPressed
+        pass
 
 
-    def move(self, position, completedMove):
-        queueEntry = (position, completedMove, False)
-        self.queue.append(queueEntry)
+class TrolleyObserver():
+    # Called when the trolley returns to the home position.
+    @abstractmethod
+    def trolleyMovedHome(self, trolley):
+        pass
 
-    def nextMove(self):
-        currPos, _ , _  = self.queue[self.queueIndex]
-        notFinished     = list(filter(lambda i, e: e[2]==False, enumerate(self.queue)))
-        index, element  = min(notFinished, key=lambda i, element: abs(currPos - element[0]))
-        # TODO: Move the Motor here
-        element[1]()                                                            # This is the completion handler of the queue entry
-        self.queueIndex = index                                                 # Updates the queueIndex
-
-    def startMoving(self):
-        self.queueIndex = 0
-        nextMove()
+    # Called when the trolley moves to not the home position.
+    @abstractmethod
+    def trolleyFinishedMove(self, trolley):
+        pass
