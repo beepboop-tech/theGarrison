@@ -8,6 +8,6 @@ class Optic(Dispenser):
         self.actuator = actuator
 
     def dispense(self, amount):
-        # for _ in amount:
-        #     self.actuator.press()
-        pass
+         for _ in amount:
+             self.actuator.press()
+        
