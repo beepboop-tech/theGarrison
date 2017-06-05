@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 
 class Trolley():
-    def __init__(self, homePosition=0):
+    def __init__(self, homePosition=0, stepper):
+        self.stepper = stepper
         self.resetPosition()
         self.currentPosition = 0
         self.homePosition = homePosition
@@ -24,7 +25,8 @@ class Trolley():
 
     # Moves to position.
     def __moveTo(self, position, isHome=False):
-        # Use motor...
+        self.stepper.moveRelative(position - self.currentPosition)              # TODO Test
+        self.currentPosition = position                                         # TODO Test
         for observer in self.observers:
             if isHome:
                 observer.trolleyMovedHome(self)
