@@ -16,8 +16,5 @@ class TestMeasuresMethods(unittest.TestCase):
             lst.append(ingredient)
         self.assertEqual(lst, ["ing1", "ing2", "ing3"])
 
-
-
-
 if __name__ == '__main__':
     unittest.main()
