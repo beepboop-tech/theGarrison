@@ -7,5 +7,4 @@ class Pump(Dispenser):
         self.impeller = impeller
 
     def dispense(self, amount):
-        #self.impeller.pour(amount.amount)
-        pass
+        self.impeller.pour(amount.amount)
