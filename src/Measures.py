@@ -2,7 +2,7 @@ class Unit():
 
     def __init__(self, amount, name):
         self.amount = amount
-        self.name = name
+        self.name   = name
 
     def binaryOp(self, otherUnit, op):
         self.checkType(otherUnit)
@@ -20,7 +20,7 @@ class Unit():
         return (self.amount <= otherUnit.amount)
 
     def __iter__(self):
-        return range(self.amount)
+        return range(self.amount).__iter__()
 
     def __eq__(self, otherUnit):
         self.checkType(otherUnit)

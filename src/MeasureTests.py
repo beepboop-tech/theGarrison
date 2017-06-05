@@ -3,6 +3,9 @@ import unittest
 from Measures import *
 
 class TestMeasuresMethods(unittest.TestCase):
+    ##################
+    # Addition Tests #
+    ##################
 
     # Tests the amount of two units is added together.
     def testAddAmounts(self):
@@ -28,6 +31,11 @@ class TestMeasuresMethods(unittest.TestCase):
         f = lambda: a + b
         self.assertRaises(TypeError, f)
 
+
+    #####################
+    # Subtraction Tests #
+    #####################
+
     # Tests the amount of two units subtracted.
     def testSubAmounts(self):
         a = Shot(5)
@@ -52,6 +60,10 @@ class TestMeasuresMethods(unittest.TestCase):
         f = lambda: a - b
         self.assertRaises(TypeError, f)
 
+    ####################
+    # Less Equal Tests #
+    ####################
+
     # Tests that the <= function works with units
     def testLessEqual(self):
         a = Shot(1)
@@ -68,6 +80,10 @@ class TestMeasuresMethods(unittest.TestCase):
         f = lambda: a <= b
         self.assertRaises(TypeError, f)
 
+    ##################
+    # Equality Tests #
+    ##################
+
     def testEqual(self):
         a = Shot(1)
         b = Shot(1)
@@ -83,6 +99,18 @@ class TestMeasuresMethods(unittest.TestCase):
         a = Shot(1)
         b = Shot(2)
         self.assertNotEqual(a, b)
+
+    ##################
+    # Iterable Tests #
+    ##################
+
+    def testIterateCorrectNumberOfTimes(self):
+        a   = Shot(5)
+        lst = []
+        for _ in a:
+            lst.append("x")
+        self.assertEqual(len(lst), 5)
+
 
 
 if __name__ == '__main__':
