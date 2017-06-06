@@ -1,3 +1,13 @@
+
+# STEPPER NOTES:
+#
+# Wire colours, besy guess so far
+#   Red Wire   ->  A
+#   Blue Wire  -> -A
+#   Green Wire ->  B
+#   Black WIre -> -B
+
+
 class Stepper():
     def moveRelative(self, movement):
         if (movement < 0):

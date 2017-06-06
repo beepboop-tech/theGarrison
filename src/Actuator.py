@@ -3,6 +3,16 @@ from abc import ABC, abstractmethod
 import time
 import constants
 
+# ACTUATOR NOTES:
+#
+# To Extend:
+#     Red wire   -> negitive
+#     Black wire -> positive
+#
+# To retract:
+#     Red wire   -> positive
+#     Black wire -> negitive
+
 class Actuator():
 
     def __init__(self):
