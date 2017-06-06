@@ -1,12 +1,12 @@
 class Stepper():
-    def moveRelative(movement):
+    def moveRelative(self, movement):
         if (movement < 0):
-            moveLeft(-1 * movement)
+            self.moveLeft(-1 * movement)
         else:
-            moveRight(movement)
+            self.moveRight(movement)
 
-    def moveLeft(movement):
+    def moveLeft(self, movement):
         pass
 
-    def moveRight(movement):
+    def moveRight(self, movement):
         pass
