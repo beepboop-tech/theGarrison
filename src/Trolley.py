@@ -16,7 +16,7 @@ class Trolley():
         if (issubclass(type(observer), TrolleyObserver)):
             self.observers.append(observer)
         else:
-            raise TypeError("observer must be a TrolleyObserver.")
+            raise TypeError("observer must be a TrolleyObserver")
 
     # NOTE: This should block as the current position is initialised to zero
     # afterwards.
