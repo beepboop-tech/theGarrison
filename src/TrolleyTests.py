@@ -1,11 +1,11 @@
 import unittest
 
 from Trolley import Trolley
-from Trolley import  TrolleyObserver
+from Trolley import TrolleyObserver
 
 class TestObserver(TrolleyObserver):
     def __init__(self):
-        self.movedHome = False
+        self.movedHome     = False
         self.finishedMoved = False
 
     def trolleyMovedHome(self, trolley):
