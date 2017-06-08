@@ -19,7 +19,7 @@ class TestImpellerObserver(ImpellerObserver):
 
 class TestActiuatorMethods(unittest.TestCase):
     def setUp(self):
-        self.impeller = Impeller()
+        self.impeller = Impeller(1)
 
         ob1 = TestImpellerObserver()
         ob2 = TestImpellerObserver()

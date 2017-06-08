@@ -5,8 +5,9 @@ import constants
 
 class Impeller():
 
-    def __init__(self):
+    def __init__(self, pin):
         self.observers = []
+        self.pin       = pin
 
     # Adds observer as an observer of the impeller. It will be notified when the
     # impeller is turned on or off.
@@ -23,12 +24,12 @@ class Impeller():
         self.turnOff()
 
     def turnOn(self):
-        # Turn on the pump relay
+        # Turn on the pump relay using self.pin
         for observer in self.observers:
             observer.impellerOn(self)
 
     def turnOff(self):
-        # Turn off the pump relay
+        # Turn off the pump relay using self.pin
         for observer in self.observers:
             observer.impellerOff(self)
 
