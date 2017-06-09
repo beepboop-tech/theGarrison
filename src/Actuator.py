@@ -9,14 +9,16 @@ import constants
 #     Red wire   -> negitive
 #     Black wire -> positive
 #
-# To retract:
+# To Retract:
 #     Red wire   -> positive
 #     Black wire -> negitive
 
 class Actuator():
 
-    def __init__(self):
+    def __init__(self, upPin=constants.ACTUATOR_UP, downPin=constants.ACTUATOR_DOWN):
         self.observers = []
+        self.upPin     = upPin
+        self.downPin   = downPin
 
     # Adds observer as an observer of the actuator. It will be notified when the
     # actuator moves.
@@ -25,7 +27,6 @@ class Actuator():
             self.observers.append(observer)
         else:
             raise TypeError("observer must be a ActuatorObserver.")
-
 
     def press(self):
         time.sleep(constants.TIME_TO_WAIT_BETWEEN_PRESSES)
@@ -44,13 +45,15 @@ class Actuator():
             observer.actuatorLowered(self)
 
 
+# This class describes objects that can observe the actions of
+# an Actuator, and get notified when certain actions are carried out.
 class ActuatorObserver():
     # Called when the actuator is Rasied
     @abstractmethod
     def actuatorRaised(self, actuator):
         pass
 
-    # Called when the actuator is lowereds
+    # Called when the actuator is lowered
     @abstractmethod
     def actuatorLowered(self, actuator):
         pass

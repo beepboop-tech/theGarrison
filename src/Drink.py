@@ -1,6 +1,6 @@
 class Drink():
     def __init__(self, name, ingredients):
-        self.name = name
+        self.name        = name
         self.ingredients = ingredients
 
     def __eq__(self, otherDrink):

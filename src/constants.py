@@ -1,9 +1,13 @@
-# GPIO PINS
+# Defines the constants the theGarrison will use, such as GPIO pins and TIME
+# constants
 
-PUMP_1                          = 17
-PUMP_2                          = 18
-PUMP_3                          = 19
-PUMP_4                          = 20
+# GPIO PINS
+PUMP_1                          = None
+PUMP_2                          = None
+PUMP_3                          = None
+PUMP_4                          = None
+ACTUATOR_UP                     = None
+ACTUATOR_DOWN                   = None
 
 
 # TIME UNITS

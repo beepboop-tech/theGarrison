@@ -4,7 +4,6 @@ import time
 import constants
 
 class Impeller():
-
     def __init__(self, pin):
         self.observers = []
         self.pin       = pin
@@ -16,7 +15,6 @@ class Impeller():
             self.observers.append(observer)
         else:
             raise TypeError("observer must be a ImpellerObserver.")
-
 
     def pour(self, mils):
         self.turnOn()
@@ -34,6 +32,8 @@ class Impeller():
             observer.impellerOff(self)
 
 
+# This class describes objects that can observe the actions of
+# an Impeller, and get notified when certain actions are carried out.
 class ImpellerObserver():
     # Called when the impeller is turned on
     @abstractmethod

@@ -3,6 +3,7 @@ import unittest
 from Actuator import Actuator
 from Actuator import ActuatorObserver
 
+# Implaments an ActuatorObserver for testing
 class TestActuatorObserver(ActuatorObserver):
     def __init__(self):
         self.raised  = False
@@ -18,6 +19,7 @@ class TestActuatorObserver(ActuatorObserver):
 
 
 class TestActiuatorMethods(unittest.TestCase):
+    # Run before each test
     def setUp(self):
         self.actuator = Actuator()
 
@@ -29,12 +31,13 @@ class TestActiuatorMethods(unittest.TestCase):
         self.actuator.resgisterObserver(ob1)
         self.actuator.resgisterObserver(ob2)
 
+    # Runn after each test
     def tearDown(self):
         del self.actuator
         del self.observers
 
     # Tests the trolley calls the `trolleyMovedHome` method for
-    # observers is called.
+    # observers.
     def testRaisedCalled(self):
         self.actuator.extend()
 
@@ -45,7 +48,7 @@ class TestActiuatorMethods(unittest.TestCase):
         self.assertFalse(any(lowered))
 
     # Tests the trolley calls the `trolleyMovedHome` method for
-    # observers is called.
+    # observers.
     def testLoweredCalled(self):
         self.actuator.retract()
 
@@ -54,7 +57,6 @@ class TestActiuatorMethods(unittest.TestCase):
 
         self.assertTrue(all(lowered))
         self.assertFalse(any(raised))
-
 
 
 if __name__ == '__main__':
