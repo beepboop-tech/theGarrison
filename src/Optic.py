@@ -7,5 +7,5 @@ class Optic(Dispenser):
         self.actuator = actuator
 
     def dispense(self, amount):
-         for _ in amount:
+         for _ in amount: # NOTE range(amount?)
              self.actuator.press()
