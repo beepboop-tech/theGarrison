@@ -1,0 +1,33 @@
+{
+    "menus":[
+      {
+        "name" : "main",
+        "drinks": [
+          { "name"   :"screwdriver",
+            "spirits":["vodka"],
+            "mixers" :["orange"]
+          },
+
+          { "name"   :"gin and tonic",
+            "spirits":["gin"],
+            "mixers" :["tonic"]
+          }
+        ]
+      },
+
+      {
+        "name" : "vip",
+        "drinks": [
+          { "name"   :"screwdriver delux",
+            "spirits":["vodka"],
+            "mixers" :["orange"]
+          },
+
+          { "name"   :"gin and tonic delux",
+            "spirits":["gin"],
+            "mixers" :["tonic"]
+          }
+        ]
+      }
+    ]
+ }

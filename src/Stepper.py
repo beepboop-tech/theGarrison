@@ -16,7 +16,9 @@ class Stepper():
             self.moveRight(movement)
 
     def moveLeft(self, movement):
+        # TODO Implement motor control
         pass
 
     def moveRight(self, movement):
+        # TODO Implement motor control
         pass
