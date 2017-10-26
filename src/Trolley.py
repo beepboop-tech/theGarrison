@@ -3,12 +3,16 @@ from Stepper import Stepper
 
 class Trolley():
     def __init__(self, stepper=Stepper(), homePosition=0):
-        self.stepper = stepper
+        self.stepper      = stepper
+        self.homePosition = homePosition
+        self.observers    = []
+
+
+    def reset(self):
         self.resetPosition()
         self.currentPosition = 0
-        self.homePosition = homePosition
-        self.observers = []
         self.goHome()
+
 
     # Adds observer as an observer of the trolley. It will be notified when the
     # trolley moves home, and finishes a move.

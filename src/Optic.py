@@ -7,5 +7,9 @@ class Optic(Dispenser):
         self.actuator = actuator
 
     def dispense(self, amount):
-         for _ in amount: # NOTE range(amount?)
-             self.actuator.press()
+        """
+        Presses the actuator the required number of times.
+        Uses the `__iter__` method of the unit, so `range` not needed.
+        """
+        for _ in amount:
+            self.actuator.press()

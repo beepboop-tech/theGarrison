@@ -18,6 +18,7 @@ class TestObserver(TrolleyObserver):
 class TestTrolleyMethods(unittest.TestCase):
     def setUp(self):
         self.trolley = Trolley()
+        self.trolley.reset()
 
         ob1 = TestObserver()
         ob2 = TestObserver()
