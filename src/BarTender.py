@@ -68,7 +68,7 @@ class BarTender(TrolleyObserver, ActuatorObserver):
     def shutDown(self):
         self.trolley.moveTo(0)
         self.trolley.stepper.motor.free()
-        exit(1)
+        
 
 
     # Trolley Observer

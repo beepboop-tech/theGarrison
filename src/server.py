@@ -18,6 +18,8 @@ b = BarTender()
 
 class MenuAPI(Resource):
     def get(self):
+        global drinks
+	global b
         menu = []
         for drink in drinks:
             if b.canMake(drink):
@@ -28,6 +30,7 @@ class AddQueueAPI(Resource):
     def put(self, drink_name: str):
         global glassInPlace
         global b
+        global drinks
 
         if not glassInPlace:
             return {'error': 'No Glass. PUT to /glass'}, 403
