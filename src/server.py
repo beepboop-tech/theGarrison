@@ -34,7 +34,7 @@ class AddQueueAPI(Resource):
 
         if not glassInPlace:
             return {'error': 'No Glass. PUT to /glass'}, 403
-        if drink_name not in drinks:
+        if drink_name not in [drink.name for drink in drinks]:
             return {'error': drink_name + ' is not a valid drink. GET from /menu to see drinks'}, 404
 
         for drink in drinks:
