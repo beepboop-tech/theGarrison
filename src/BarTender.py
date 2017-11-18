@@ -44,7 +44,7 @@ class BarTender(TrolleyObserver, ActuatorObserver):
 
     def make(self, drink):
         if not self.canMake(drink):
-            return
+            return False
         for ingredient in drink:
             for dispenser in self.dispensers:
                 if (dispenser.name == ingredient):
@@ -52,6 +52,7 @@ class BarTender(TrolleyObserver, ActuatorObserver):
                     self.actuator.press()
                     dispenser.amount -=1
         self.trolley.goHome()
+        return True
 
     def canMake(drink):
         for ingredient in drink:

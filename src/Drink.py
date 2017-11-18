@@ -11,9 +11,9 @@ class Drink():
         return self.ingredients.__iter__()
 
 
-drinks = [Drink('Gin on the Rocks', ['gin']),
-          Drink('Double Gin', ['gin', 'gin']),
-          Drink('Vodka on the Rocks', ['vodka', 'vodka']),
-          Drink('Peach Shnapps',['peach']),
-          Drink('Sex on the Beach',['vodka', 'peach'])
+drinks = [Drink('gin-on-the-rocks', ['gin']),
+          Drink('double-gin', ['gin', 'gin']),
+          Drink('vodka-on-the-rocks', ['vodka', 'vodka']),
+          Drink('peach-shnapps',['peach']),
+          Drink('sex-on-the-beach',['vodka', 'peach'])
           ]
