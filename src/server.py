@@ -19,7 +19,7 @@ b = BarTender()
 class MenuAPI(Resource):
     def get(self):
         global drinks
-	global b
+        global b
         menu = []
         for drink in drinks:
             if b.canMake(drink):
