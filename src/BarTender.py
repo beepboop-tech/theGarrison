@@ -55,20 +55,20 @@ class BarTender(TrolleyObserver, ActuatorObserver):
         return True
 
     def canMake(drink):
-        for ingredient in drink:
-            hasIngredient = False
-            for dispenser in self.dispensers:
-                if (ingredient == dispenser.name) and (dispenser.amount > 1):
-                    hasIngredient = True
-            if not hasIngredient:
-                return False
+        # for ingredient in drink:
+        #     hasIngredient = False
+        #     for dispenser in self.dispensers:
+        #         if (ingredient == dispenser.name) and (dispenser.amount > 1):
+        #             hasIngredient = True
+        #     if not hasIngredient:
+        #         return False
         return True
 
 
     def shutDown(self):
         self.trolley.moveTo(0)
         self.trolley.stepper.motor.free()
-        
+
 
 
     # Trolley Observer
