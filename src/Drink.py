@@ -9,3 +9,11 @@ class Drink():
 
     def __iter__(self):
         return self.ingredients.__iter__()
+
+
+drinks = [Drink('Gin on the Rocks', ['gin']),
+          Drink('Double Gin', ['gin', 'gin']),
+          Drink('Vodka on the Rocks', ['vodka', 'vodka']),
+          Drink('Peach Shnapps',['peach']),
+          Drink('Sex on the Beach',['vodka', 'peach'])
+          ]

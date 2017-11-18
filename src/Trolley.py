@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
 from Stepper import Stepper
+import constants
 
 class Trolley():
-    def __init__(self, stepper=Stepper(), homePosition=0):
+    def __init__(self, stepper=Stepper(), homePosition=45.5):
         self.stepper      = stepper
         self.homePosition = homePosition
         self.observers    = []
@@ -31,12 +32,16 @@ class Trolley():
     # Moves to position.
     def __moveTo(self, position, isHome=False):
 
+        for observer in self.observers:
+            observer.trolleyMoving(self)
+
         movement = position - self.currentPosition
         self.stepper.moveRelative(movement)
         self.currentPosition = position                                         # TODO Test
         for observer in self.observers:
             if isHome:
                 observer.trolleyMovedHome(self)
+                observer.trolleyFinishedMove(self)
             else:
                 observer.trolleyFinishedMove(self)
 
@@ -44,6 +49,8 @@ class Trolley():
         self.__moveTo(self.homePosition, isHome=True)
 
     def moveTo(self, position):
+        if(position > constants.MAX_RIGHT):
+            position = constants.MAX_RIGHT
         self.__moveTo(position)
 
     def safeToMove(self):
@@ -60,4 +67,8 @@ class TrolleyObserver():
     # Called when the trolley moves to not the home position.
     @abstractmethod
     def trolleyFinishedMove(self, trolley):
+        pass
+
+    @abstractmethod
+    def trolleyMoving(self, trolley):
         pass

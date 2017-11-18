@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
-
+from SlushConfig import board
 import time
 import constants
-
 # ACTUATOR NOTES:
 #
 # To Extend:
@@ -16,9 +15,11 @@ import constants
 class Actuator():
 
     def __init__(self, upPin=constants.ACTUATOR_UP, downPin=constants.ACTUATOR_DOWN):
+
         self.observers = []
         self.upPin     = upPin
         self.downPin   = downPin
+        self.resetHeight()
 
     # Adds observer as an observer of the actuator. It will be notified when the
     # actuator moves.
@@ -36,13 +37,30 @@ class Actuator():
 
     def extend(self):
         # Implament the relay control here
+        board.setIOState(0, self.upPin, 1)
+        time.sleep(constants.ACTUATOR_TRAVEL_TIME)
+        board.setIOState(0, self.upPin, 0)
         for observer in self.observers:
             observer.actuatorRaised(self)
 
     def retract(self):
         # Implament the relay control here
+        board.setIOState(0, self.downPin, 1)
+        time.sleep(constants.ACTUATOR_TRAVEL_TIME)
+        board.setIOState(0, self.downPin, 0)
         for observer in self.observers:
             observer.actuatorLowered(self)
+
+    def resetHeight(self):
+        board.setIOState(0, self.downPin, 1)
+        time.sleep(6)
+        board.setIOState(0, self.downPin, 0)
+
+        board.setIOState(0, self.upPin, 1)
+        time.sleep(2.5)
+        board.setIOState(0, self.upPin, 0)
+
+        
 
 
 # This class describes objects that can observe the actions of

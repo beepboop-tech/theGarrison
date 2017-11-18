@@ -1,3 +1,5 @@
+import constants
+from SlushConfig import motor
 
 # STEPPER NOTES:
 #
@@ -9,6 +11,9 @@
 
 
 class Stepper():
+    def __init__(self):
+        self.motor = motor
+    
     def moveRelative(self, movement):
         if (movement < 0):
             self.moveLeft(-1 * movement)
@@ -16,9 +21,27 @@ class Stepper():
             self.moveRight(movement)
 
     def moveLeft(self, movement):
-        # TODO Implement motor control
-        pass
+        self.waitUntillDone()
+        self.motor.move(int(-1 * movement*constants.STEPS_PER_CM))
+        self.waitUntillDone()
 
     def moveRight(self, movement):
-        # TODO Implement motor control
-        pass
+        self.waitUntillDone()
+        self.motor.move(int(movement*constants.STEPS_PER_CM))
+        self.waitUntillDone()
+
+    def test(self):
+        self.waitUntillDone()
+        self.motor.move(1000)
+        self.waitUntillDone()
+        self.motor.move(-1000)
+        self.waitUntillDone()
+
+    def waitUntillDone(self):
+        while(self.motor.isBusy()):
+            continue       
+        
+        
+
+
+

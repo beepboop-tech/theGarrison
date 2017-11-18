@@ -3,6 +3,9 @@ import unittest
 from Actuator import Actuator
 from Actuator import ActuatorObserver
 
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BCM)
+
 # Implaments an ActuatorObserver for testing
 class TestActuatorObserver(ActuatorObserver):
     def __init__(self):
