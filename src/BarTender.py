@@ -3,11 +3,11 @@ from Trolley   import Trolley, TrolleyObserver
 from Dispenser import Dispenser
 from Actuator  import Actuator, ActuatorObserver
 
-d0 = Dispenser(0,  'empty', 200)
+d0 = Dispenser(0,  'gin', 30)
 d1 = Dispenser(18, 'empty', 200)
-d2 = Dispenser(36, 'peach', 200)
-d3 = Dispenser(54, 'vodka', 200)
-d4 = Dispenser(72, 'empty', 200)
+d2 = Dispenser(36, 'peach', 10)
+d3 = Dispenser(54, 'vodka', 15)
+d4 = Dispenser(72, 'rum', 40)
 d5 = Dispenser(88, 'empty', 200)
 
 class BarTender(TrolleyObserver, ActuatorObserver):
@@ -43,12 +43,26 @@ class BarTender(TrolleyObserver, ActuatorObserver):
             self.dispensers.append(dispenser)
 
     def make(self, drink):
+        if not self.canMake(drink):
+            return
         for ingredient in drink:
             for dispenser in self.dispensers:
                 if (dispenser.name == ingredient):
                     self.trolley.moveTo(dispenser.position)
                     self.actuator.press()
+                    dispenser.amount -=1
         self.trolley.goHome()
+
+    def canMake(drink):
+        for ingredient in drink:
+            hasIngredient = False
+            for dispenser in self.dispensers:
+                if (ingredient == dispenser.name) and (dispenser.amount > 1):
+                    hasIngredient = True
+            if not hasIngredient:
+                return False
+        return True
+
 
     def shutDown(self):
         self.trolley.moveTo(0)
