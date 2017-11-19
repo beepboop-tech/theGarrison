@@ -55,6 +55,11 @@ class GlassAPI(Resource):
         glassInPlace = True
         return {'sucess': 'Placed glass'}
 
+class DispenserAPI(Resource):
+    def get(self):
+        global b
+        return {'dispensers': [dispenser.name for dispenser in b.dispensers]}, 200
+
 class ShutdownAPI(Resource):
     def put(self):
         global b
@@ -65,7 +70,8 @@ class ShutdownAPI(Resource):
 api.add_resource(MenuAPI,     '/menu', endpoint='menu')
 api.add_resource(AddQueueAPI, '/queue/<string:drink_name>', endpoint='add_queue')
 api.add_resource(GlassAPI,    '/glass', endpoint='glass')
-api.add_resource(ShutdownAPI,    '/shutdown', endpoint='shutdown')
+api.add_resource(ShutdownAPI, '/shutdown', endpoint='shutdown')
+api.add_resource(DispenserAPI, '/dispensers', endpoint='dispensers')
 
 
 
