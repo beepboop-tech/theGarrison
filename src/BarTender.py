@@ -1,15 +1,11 @@
 from Stepper   import Stepper
 from Trolley   import Trolley, TrolleyObserver
-from Dispenser import Dispenser
 from Actuator  import Actuator, ActuatorObserver
+from Dispenser import Dispenser, loadDispensers, storeDispensers
+from Drink     import Drink, loadDrinks, storeDrinks
 import constants
 
-d0 = Dispenser(constants.DISPENSER_0_LOC,  'gin', 30)
-d1 = Dispenser(constants.DISPENSER_1_LOC, 'empty', 200)
-d2 = Dispenser(constants.DISPENSER_2_LOC, 'peach', 10)
-d3 = Dispenser(constants.DISPENSER_3_LOC, 'vodka', 15)
-d4 = Dispenser(constants.DISPENSER_4_LOC, 'rum', 40)
-d5 = Dispenser(constants.DISPENSER_5_LOC, 'empty', 200)
+
 
 class BarTender(TrolleyObserver, ActuatorObserver):
     def __init__(self):
@@ -27,21 +23,12 @@ class BarTender(TrolleyObserver, ActuatorObserver):
         self.actuator.resgisterObserver(self)
 
 
-        self.dispensers = []
+        self.dispensers = loadDispensers()
+        self.drinks     = loadDrinks()
         self.queue      = []
 
-        for dispenser in [d0,d1,d2,d3,d4,d5]:
-            self.addDispenser(dispenser)
+        self.has_glass  = False
 
-
-
-    def addDispenser(self, dispenser):
-        """
-        After checking if the position is free, adds a dispenser to the
-        Bartenders dispensers
-        """
-        if (dispenser.position not in [owned.position for owned in self.dispensers]):
-            self.dispensers.append(dispenser)
 
     def make(self, drink):
         if not self.canMake(drink):
@@ -52,7 +39,9 @@ class BarTender(TrolleyObserver, ActuatorObserver):
                     self.trolley.moveTo(dispenser.position)
                     self.actuator.press()
                     dispenser.amount -=1
+
         self.trolley.goHome()
+        storeDispensers(self.dispensers)
         return True
 
     def canMake(self, drink):
@@ -67,6 +56,7 @@ class BarTender(TrolleyObserver, ActuatorObserver):
 
 
     def shutDown(self):
+        storeDispensers(self.dispensers)
         self.trolley.moveTo(0)
         self.trolley.stepper.motor.free()
 

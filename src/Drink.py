@@ -1,3 +1,4 @@
+import pickle
 class Drink():
     def __init__(self, name, ingredients):
         self.name        = name
@@ -10,10 +11,11 @@ class Drink():
     def __iter__(self):
         return self.ingredients.__iter__()
 
+def loadDrinks(pickle_file = 'pickles/drinks.pickle'):
+    with open(pickle_file, 'rb') as handle:
+         drinks = pickle.load(handle)
+    return drinks
 
-drinks = [Drink('gin-on-the-rocks', ['gin']),
-          Drink('double-gin', ['gin', 'gin']),
-          Drink('vodka-on-the-rocks', ['vodka', 'vodka']),
-          Drink('peach-shnapps',['peach']),
-          Drink('sex-on-the-beach',['vodka', 'peach'])
-          ]
+def storeDrinks(drinks, pickle_file = 'pickles/drinks.pickle'):
+    with open(pickle_file, 'wb') as handle:
+        pickle.dump(drinks, handle, protocol=pickle.HIGHEST_PROTOCOL)

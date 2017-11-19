@@ -1,7 +1,7 @@
 from flask            import Flask, g
 from flask_restful    import Api, Resource, reqparse, abort
 from BarTender import BarTender
-from Drink import drinks
+from Drink import Drink, storeDrinks
 
 import os
 
@@ -9,54 +9,52 @@ import os
 app  = Flask(__name__)
 api  = Api(app)
 
-glassInPlace = False
 
 b = BarTender()
 
 
-class MenuAPI(Resource):
+class DrinkListAPI(Resource):
     def get(self):
-        global drinks
         global b
         menu = []
-        for drink in drinks:
+        for drink in b.drinks:
             if b.canMake(drink):
                 menu.append(drink.name)
         return {'menu': menu}, 200
 
 class AddQueueAPI(Resource):
     def put(self, drink_name: str):
-        global glassInPlace
         global b
-        global drinks
 
-        if not glassInPlace:
+        if not b.has_glass:
             return {'error': 'No Glass. PUT to /glass'}, 403
-        if drink_name not in [drink.name for drink in drinks]:
+        if drink_name not in [drink.name for drink in b.drinks]:
             return {'error': drink_name + ' is not a valid drink. GET from /menu to see drinks'}, 404
 
-        for drink in drinks:
+        for drink in b.drinks:
             if drink.name == drink_name:
                 b.make(drink)
                 break
-        glassInPlace = False
+        b.has_glass = False
         return {'sucess': 'Made drink'},200
 
 
 
 
 class GlassAPI(Resource):
-
     def put(self):
-        global glassInPlace
+        global b
 
-        glassInPlace = True
+        b.has_glass = True
         return {'sucess': 'Placed glass'}
 
 class DispenserListAPI(Resource):
     def get(self):
         global b
-        return {'dispensers': [dispenser.name for dispenser in b.dispensers]}, 200
+        ret = {}
+        for i, d in enumerate(b.dispensers):
+            ret[str(i): {'name': d.name, 'remaining': d.amount}]
+        return {'dispensers': ret}, 200
 
 
 class ShutdownAPI(Resource):
@@ -66,7 +64,7 @@ class ShutdownAPI(Resource):
         return {'sucess': 'Garrison Shutdown'},200
 
 
-api.add_resource(MenuAPI,     '/menu', endpoint='menu')
+api.add_resource(DrinkListAPI,'/drinks', endpoint='drinks')
 api.add_resource(AddQueueAPI, '/queue/<string:drink_name>', endpoint='add_queue')
 api.add_resource(GlassAPI,    '/glass', endpoint='glass')
 api.add_resource(ShutdownAPI, '/shutdown', endpoint='shutdown')
