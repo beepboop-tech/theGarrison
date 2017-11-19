@@ -88,6 +88,9 @@ api.add_resource(ShutdownAPI, '/shutdown', endpoint='shutdown')
 api.add_resource(DispenserListAPI, '/dispensers', endpoint='dispensers')
 
 
+@app.route('/', methods=['GET'])
+def homepage():
+    return "Here are some docs"
 
 if __name__ == '__main__':
     app.run(host= '0.0.0.0')
