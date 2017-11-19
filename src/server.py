@@ -14,6 +14,15 @@ b = BarTender()
 
 
 class DrinkListAPI(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+
+        self.reqparse.add_argument('name', type=str, required=True, location='json')
+        self.reqparse.add_argument('ingredients',  type=list, required=True, location='json')
+
+        super(self.__class__, self).__init__()
+
+
     def get(self):
         global b
         menu = []
@@ -21,6 +30,13 @@ class DrinkListAPI(Resource):
             if b.canMake(drink):
                 menu.append(drink.name)
         return {'menu': menu}, 200
+
+    def put(self):
+        jsonDrink = self.reqparse.parse_args()
+        b.drinks.append(Drink(jsonDrink['name'], jsonDrink['ingredients']))
+        storeDrinks(b.drinks)
+        return {'sucess': 'Added the new drink'}, 200
+
 
 class AddQueueAPI(Resource):
     def put(self, drink_name: str):
