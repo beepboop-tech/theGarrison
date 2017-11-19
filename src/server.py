@@ -31,11 +31,12 @@ class DrinkListAPI(Resource):
                 menu.append(drink.name)
         return {'menu': menu}, 200
 
-    def put(self):
-        jsonDrink = self.reqparse.parse_args()
-        b.drinks.append(Drink(jsonDrink['name'], list(jsonDrink['ingredients'])))
-        storeDrinks(b.drinks)
-        return {'sucess': 'Added the new drink'}, 200
+    # TODO The ingredients list doesnt work
+    # def put(self):
+    #     jsonDrink = self.reqparse.parse_args()
+    #     b.drinks.append(Drink(jsonDrink['name'], list(jsonDrink['ingredients'])))
+    #     storeDrinks(b.drinks)
+    #     return {'sucess': 'Added the new drink'}, 200
 
 
 class AddQueueAPI(Resource):
