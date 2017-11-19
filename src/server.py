@@ -9,8 +9,6 @@ import os
 app  = Flask(__name__)
 api  = Api(app)
 
-
-
 glassInPlace = False
 
 b = BarTender()
@@ -55,10 +53,11 @@ class GlassAPI(Resource):
         glassInPlace = True
         return {'sucess': 'Placed glass'}
 
-class DispenserAPI(Resource):
+class DispenserListAPI(Resource):
     def get(self):
         global b
         return {'dispensers': [dispenser.name for dispenser in b.dispensers]}, 200
+
 
 class ShutdownAPI(Resource):
     def put(self):
@@ -71,7 +70,7 @@ api.add_resource(MenuAPI,     '/menu', endpoint='menu')
 api.add_resource(AddQueueAPI, '/queue/<string:drink_name>', endpoint='add_queue')
 api.add_resource(GlassAPI,    '/glass', endpoint='glass')
 api.add_resource(ShutdownAPI, '/shutdown', endpoint='shutdown')
-api.add_resource(DispenserAPI, '/dispensers', endpoint='dispensers')
+api.add_resource(DispenserListAPI, '/dispensers', endpoint='dispensers')
 
 
 

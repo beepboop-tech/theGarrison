@@ -2,13 +2,14 @@ from Stepper   import Stepper
 from Trolley   import Trolley, TrolleyObserver
 from Dispenser import Dispenser
 from Actuator  import Actuator, ActuatorObserver
+import constants
 
-d0 = Dispenser(0,  'gin', 30)
-d1 = Dispenser(18, 'empty', 200)
-d2 = Dispenser(36, 'peach', 10)
-d3 = Dispenser(54, 'vodka', 15)
-d4 = Dispenser(72, 'rum', 40)
-d5 = Dispenser(88, 'empty', 200)
+d0 = Dispenser(constants.DISPENSER_0_LOC,  'gin', 30)
+d1 = Dispenser(constants.DISPENSER_1_LOC, 'empty', 200)
+d2 = Dispenser(constants.DISPENSER_2_LOC, 'peach', 10)
+d3 = Dispenser(constants.DISPENSER_3_LOC, 'vodka', 15)
+d4 = Dispenser(constants.DISPENSER_4_LOC, 'rum', 40)
+d5 = Dispenser(constants.DISPENSER_5_LOC, 'empty', 200)
 
 class BarTender(TrolleyObserver, ActuatorObserver):
     def __init__(self):

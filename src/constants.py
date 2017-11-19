@@ -20,3 +20,12 @@ ACTUATOR_TRAVEL_TIME            = 2.5
 STEPS_PER_CM                    = 810
 MOTOR_NUMBER                    = 0
 MAX_RIGHT                       = 88
+
+
+# Dispenser Locations
+DISPENSER_0_LOC                 = 0
+DISPENSER_1_LOC                 = 18
+DISPENSER_2_LOC                 = 36
+DISPENSER_3_LOC                 = 54
+DISPENSER_4_LOC                 = 72
+DISPENSER_5_LOC                 = 88
