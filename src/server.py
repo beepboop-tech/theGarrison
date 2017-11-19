@@ -33,7 +33,7 @@ class DrinkListAPI(Resource):
 
     def put(self):
         jsonDrink = self.reqparse.parse_args()
-        b.drinks.append(Drink(jsonDrink['name'], jsonDrink['ingredients']))
+        b.drinks.append(Drink('rum-and-vodka', ['rum', 'vodka']))
         storeDrinks(b.drinks)
         return {'sucess': 'Added the new drink'}, 200
 
