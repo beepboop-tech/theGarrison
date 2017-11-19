@@ -70,4 +70,4 @@ api.add_resource(ShutdownAPI,    '/shutdown', endpoint='shutdown')
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host= '0.0.0.0')
