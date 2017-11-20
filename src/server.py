@@ -19,7 +19,7 @@ class DrinkListAPI(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument('name', type=str, required=True, location='json')
-        self.reqparse.add_argument('ingredients',  type=list, required=True, location='json')
+        self.reqparse.add_argument('ingredients',  action=append, required=True, location='json')
 
         super(self.__class__, self).__init__()
 
