@@ -32,7 +32,7 @@ class DrinkListAPI(Resource):
         return {'menu': menu}, 200
 
     # TODO The ingredients list doesnt work
-    def put(self):
+    def post(self):
         jsonDrink = self.reqparse.parse_args()
         b.drinks.append(Drink(jsonDrink['name'], list(jsonDrink['ingredients'])))
         storeDrinks(b.drinks)
@@ -56,7 +56,7 @@ class DrinkAPI(Resource):
 
 
 class AddQueueAPI(Resource):
-    def put(self, drink_name: str):
+    def post(self, drink_name: str):
         global b
 
         if not b.has_glass:
@@ -72,7 +72,7 @@ class AddQueueAPI(Resource):
         return {'sucess': 'Made drink'},200
 
 class GlassAPI(Resource):
-    def put(self):
+    def post(self):
         global b
 
         b.has_glass = True
@@ -96,7 +96,7 @@ class DispenserListAPI(Resource):
             ret['d'+str(i)] =  {'name': d.name, 'remaining': d.amount}
         return {'dispensers': ret}, 200
 
-    def put(self):
+    def post(self):
         global b
         jsonDispenser = self.reqparse.parse_args()
 
@@ -114,7 +114,7 @@ class DispenserListAPI(Resource):
         return {'sucess': 'Added the new dispenser'}, 200
 
 class ShutdownAPI(Resource):
-    def put(self):
+    def post(self):
         global b
         b.shutDown()
         return {'sucess': 'Garrison Shutdown'},200
@@ -130,7 +130,7 @@ api.add_resource(DispenserListAPI, '/dispensers', endpoint='dispensers')
 
 @app.route('/', methods=['GET'])
 def homepage():
-    return "Here are some docs"
+    return render_template('templates/index.html')
 
 if __name__ == '__main__':
     app.run(host= '0.0.0.0')
