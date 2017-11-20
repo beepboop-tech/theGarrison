@@ -38,6 +38,22 @@ class DrinkListAPI(Resource):
         storeDrinks(b.drinks)
         return {'success': 'Drink added.' }, 200
 
+class DrinkAPI(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument('name', type=str, required=True, location='json')
+
+        super(self.__class__, self).__init__()
+
+    def get(self):
+        global b
+
+        drink_name = self.reqparse.parse_args()['name']
+        for drink in b.drinks:
+            if drink.name==drink_name:
+                return {'ingredients': list(drink.ingredients)}
+        return {'error': 'Drink not found'}, 404
+
 
 class AddQueueAPI(Resource):
     def put(self, drink_name: str):
@@ -105,6 +121,7 @@ class ShutdownAPI(Resource):
 
 
 api.add_resource(DrinkListAPI,     '/drinks',     endpoint='drinks')
+api.add_resource(DrinkAPI,     '/drinks/<string:drink_name>',     endpoint='drink')
 api.add_resource(AddQueueAPI,      '/queue/<string:drink_name>', endpoint='add_queue')
 api.add_resource(GlassAPI,         '/glass',      endpoint='glass')
 api.add_resource(ShutdownAPI,      '/shutdown',   endpoint='shutdown')
