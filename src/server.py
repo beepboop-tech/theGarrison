@@ -130,7 +130,8 @@ api.add_resource(DispenserListAPI, '/dispensers', endpoint='dispensers')
 
 @app.route('/', methods=['GET'])
 def homepage():
-    return render_template('index.html')
+    # return render_template('index.html')
+    return 'This will be the home page'
 
 if __name__ == '__main__':
     app.run(host= '0.0.0.0')
