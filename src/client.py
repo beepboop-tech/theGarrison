@@ -12,7 +12,8 @@ vr = {
 
 j = {'name': 'test', 'index': 1, 'remaining': 100}
 
-menu = requests.get('http://10.11.12.41:5000/dispensers', json=j).json()
+menu = requests.put('http://10.11.12.41:5000/shutdown').json()
+# menu = requests.get('http://10.11.12.41:5000/dispensers', json=j).json()
 print(menu)
 
 # print(requests.put('http://127.0.0.1:5000/queue/not-a-drink').json())

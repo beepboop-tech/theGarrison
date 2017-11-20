@@ -23,7 +23,6 @@ class DrinkListAPI(Resource):
 
         super(self.__class__, self).__init__()
 
-
     def get(self):
         global b
         menu = []
@@ -33,11 +32,11 @@ class DrinkListAPI(Resource):
         return {'menu': menu}, 200
 
     # TODO The ingredients list doesnt work
-    # def put(self):
-    #     jsonDrink = self.reqparse.parse_args()
-    #     b.drinks.append(Drink(jsonDrink['name'], list(jsonDrink['ingredients'])))
-    #     storeDrinks(b.drinks)
-    #     return {'sucess': 'Added the new drink'}, 200
+    def put(self):
+        jsonDrink = self.reqparse.parse_args()
+        # b.drinks.append(Drink(jsonDrink['name'], list(jsonDrink['ingredients'])))
+        # storeDrinks(b.drinks)
+        return {'ingredients': list(jsonDrink['ingredients']) }, 200
 
 
 class AddQueueAPI(Resource):
@@ -55,9 +54,6 @@ class AddQueueAPI(Resource):
                 break
         b.has_glass = False
         return {'sucess': 'Made drink'},200
-
-
-
 
 class GlassAPI(Resource):
     def put(self):
