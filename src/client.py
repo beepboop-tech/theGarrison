@@ -2,12 +2,12 @@ import requests
 from Dispenser import Dispenser
 
 vr = {
-    'name':'double-vodka-and-rum',
-    'ingredients': ['vodka', 'vodka', 'rum']
+    'name':'peaky-badger',
+    'ingredients': ['vodka', 'gin']
 }
 
 
-# menu = requests.get('http://10.11.12.41:5000/drinks', json=vr).json()
+# menu = requests.put('http://10.11.12.41:5000/drinks', json=vr).json()
 # print(menu)
 
 j = {'name': 'test', 'index': 1, 'remaining': 100}

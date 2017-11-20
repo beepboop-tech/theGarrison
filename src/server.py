@@ -34,9 +34,9 @@ class DrinkListAPI(Resource):
     # TODO The ingredients list doesnt work
     def put(self):
         jsonDrink = self.reqparse.parse_args()
-        # b.drinks.append(Drink(jsonDrink['name'], list(jsonDrink['ingredients'])))
-        # storeDrinks(b.drinks)
-        return {'ingredients': list(jsonDrink['ingredients']) }, 200
+        b.drinks.append(Drink(jsonDrink['name'], list(jsonDrink['ingredients'])))
+        storeDrinks(b.drinks)
+        return {'success': 'Drink added.' }, 200
 
 
 class AddQueueAPI(Resource):
