@@ -45,14 +45,14 @@ class DrinkAPI(Resource):
 
         super(self.__class__, self).__init__()
 
-    def get(self):
-        global b
-
-        drink_name = self.reqparse.parse_args()['name']
-        for drink in b.drinks:
-            if drink.name==drink_name:
-                return {'ingredients': list(drink.ingredients)}
-        return {'error': 'Drink not found'}, 404
+    # def get(self):
+    #     global b
+    #
+    #     drink_name = self.reqparse.parse_args()['name']
+    #     for drink in b.drinks:
+    #         if drink.name==drink_name:
+    #             return {'ingredients': list(drink.ingredients)}
+    #     return {'error': 'Drink not found'}, 404
 
 
 class AddQueueAPI(Resource):
