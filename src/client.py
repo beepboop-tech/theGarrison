@@ -1,4 +1,5 @@
 import requests
+from Dispenser import Dispenser
 
 vr = {
     'name':'double-vodka-and-rum',
@@ -8,8 +9,11 @@ vr = {
 
 # menu = requests.get('http://10.11.12.41:5000/drinks', json=vr).json()
 # print(menu)
-menu = requests.put('http://10.11.12.41:5000/shutdown', json=vr).json()
 
+j = {'name': 'test', 'index': 1, 'remaining': 100}
+
+menu = requests.get('http://10.11.12.41:5000/dispensers', json=j).json()
+print(menu)
 
 # print(requests.put('http://127.0.0.1:5000/queue/not-a-drink').json())
 # print(requests.put('http://127.0.0.1:5000/glass').json())
