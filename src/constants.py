@@ -29,3 +29,9 @@ DISPENSER_2_LOC                 = 36
 DISPENSER_3_LOC                 = 54
 DISPENSER_4_LOC                 = 72
 DISPENSER_5_LOC                 = 88
+DISPENSER_LOCATIONS             = [ DISPENSER_0_LOC,
+                                    DISPENSER_1_LOC,
+                                    DISPENSER_2_LOC,
+                                    DISPENSER_3_LOC,
+                                    DISPENSER_4_LOC,
+                                    DISPENSER_5_LOC] 

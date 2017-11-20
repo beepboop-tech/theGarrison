@@ -38,7 +38,7 @@ class BarTender(TrolleyObserver, ActuatorObserver):
                 if (dispenser.name == ingredient):
                     self.trolley.moveTo(dispenser.position)
                     self.actuator.press()
-                    dispenser.amount -=1
+                    dispenser.hasUsed(1)
 
         self.trolley.goHome()
         storeDispensers(self.dispensers)
@@ -48,7 +48,7 @@ class BarTender(TrolleyObserver, ActuatorObserver):
         for ingredient in drink:
             hasIngredient = False
             for dispenser in self.dispensers:
-                if (ingredient == dispenser.name) and (dispenser.amount > 1):
+                if (ingredient == dispenser.name) and (dispenser.has(1)):
                     hasIngredient = True
             if not hasIngredient:
                 return False

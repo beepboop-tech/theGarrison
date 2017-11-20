@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 import pickle
+import constants
+import os
 
 # Defines the Super Class for Optics and pumps, as well as mechanisms
 # for dispensers to keep track of how much fluid they have remaning
@@ -20,6 +22,9 @@ class Dispenser():
         pass
 
 def loadDispensers(pickle_file = 'pickles/dispensers.pickle'):
+    if (not os.path.isfile(pickle_file)):
+        generateDispensers()
+        loadDispensers
     with open(pickle_file, 'rb') as handle:
          dispensers = pickle.load(handle)
     return dispensers
@@ -27,3 +32,9 @@ def loadDispensers(pickle_file = 'pickles/dispensers.pickle'):
 def storeDispensers(dispensers, pickle_file = 'pickles/dispensers.pickle'):
     with open(pickle_file, 'wb') as handle:
         pickle.dump(dispensers, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+def generateDispensers():
+    dispensers = []
+    for loc in constants.DISPENSER_LOCATIONS:
+        dispensers.append(Dispenser(loc, 'empty', 0))
+    storeDispensers(dispensers)
