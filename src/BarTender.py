@@ -10,17 +10,17 @@ import constants
 class BarTender(TrolleyObserver, ActuatorObserver):
     def __init__(self):
 
-        # Trolley observer
-        self.trolleyStill  = True
-        self.trolleyAtHome = True
-        self.trolley       = Trolley(stepper=Stepper())
-        self.trolley.resgisterObserver(self)
-        self.trolley.reset()
-
-        # Actuator Observer
-        self.actuatorDown = True
-        self.actuator = Actuator()
-        self.actuator.resgisterObserver(self)
+        # # Trolley observer
+        # self.trolleyStill  = True
+        # self.trolleyAtHome = True
+        # self.trolley       = Trolley(stepper=Stepper())
+        # self.trolley.resgisterObserver(self)
+        # self.trolley.reset()
+        #
+        # # Actuator Observer
+        # self.actuatorDown = True
+        # self.actuator = Actuator()
+        # self.actuator.resgisterObserver(self)
 
 
         self.dispensers = loadDispensers()
