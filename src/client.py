@@ -7,7 +7,7 @@ vr = {
 }
 
 
-# menu = requests.put('http://10.11.12.41:5000/drinks', json=vr).json()
+# menu = requests.get('http://10.11.12.41:5000/drinks', json=vr).json()
 # print(menu)
 
 j = {'name': 'test', 'index': 1, 'remaining': 100}
