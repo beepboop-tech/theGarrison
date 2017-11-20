@@ -6,8 +6,8 @@ vr = {
 }
 
 
-menu = requests.get('http://10.11.12.41:5000/drinks', json=vr).json()
-print(menu)
+# menu = requests.get('http://10.11.12.41:5000/drinks', json=vr).json()
+# print(menu)
 menu = requests.put('http://10.11.12.41:5000/shutdown', json=vr).json()
 
 
