@@ -24,7 +24,7 @@ class Dispenser():
 def loadDispensers(pickle_file = 'pickles/dispensers.pickle'):
     if (not os.path.isfile(pickle_file)):
         generateDispensers()
-        loadDispensers
+        loadDispensers()
     with open(pickle_file, 'rb') as handle:
          dispensers = pickle.load(handle)
     return dispensers
