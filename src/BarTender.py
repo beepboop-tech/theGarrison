@@ -57,8 +57,8 @@ class BarTender(TrolleyObserver, ActuatorObserver):
 
     def shutDown(self):
         storeDispensers(self.dispensers)
-        #self.trolley.moveTo(0)
-        #self.trolley.stepper.motor.free()
+        self.trolley.moveTo(0)
+        self.trolley.stepper.motor.free()
 
 
 
