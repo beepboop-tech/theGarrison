@@ -27,4 +27,4 @@ def storeDrinks(drinks, pickle_file = 'pickles/drinks.pickle'):
 
 def generateDrinks():
     drinks = []
-    storeDrinks(dispensers)
+    storeDrinks(drinks)
