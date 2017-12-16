@@ -20,6 +20,7 @@ ACTUATOR_TRAVEL_TIME            = 2.5
 STEPS_PER_CM                    = 810
 MOTOR_NUMBER                    = 0
 MAX_RIGHT                       = 88
+HOME_POSITION                   = 45.5
 
 
 # Dispenser Locations
@@ -34,4 +35,4 @@ DISPENSER_LOCATIONS             = [ DISPENSER_0_LOC,
                                     DISPENSER_2_LOC,
                                     DISPENSER_3_LOC,
                                     DISPENSER_4_LOC,
-                                    DISPENSER_5_LOC] 
+                                    DISPENSER_5_LOC]

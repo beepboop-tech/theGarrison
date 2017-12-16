@@ -3,7 +3,7 @@ from Stepper import Stepper
 import constants
 
 class Trolley():
-    def __init__(self, stepper=Stepper(), homePosition=45.5):
+    def __init__(self, stepper=Stepper(), homePosition=constants.HOME_POSITION):
         self.stepper      = stepper
         self.homePosition = homePosition
         self.observers    = []
