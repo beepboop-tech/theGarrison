@@ -116,6 +116,7 @@ class DispenserListAPI(Resource):
             return {'error': 'Invalid dispenser type'}, 403
 
         try:
+            print('b4')
             measure = Unit.fromJson(remaining)
         except:
             return {'error': 'Could not parse remaining'}, 403

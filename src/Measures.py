@@ -35,6 +35,7 @@ class Unit():
 
     @classmethod
     def fromJson(cls, json):
+        print('in from json')
         name = json['unit']
         print('name: ' + name)
         amount = int(json['amount'])
