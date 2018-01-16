@@ -32,10 +32,9 @@ class DrinkListAPI(Resource):
                 menu.append(drink.name)
         return {'menu': menu}, 200
 
-    # TODO The ingredients list doesnt work
     def post(self):
         jsonDrink = self.reqparse.parse_args()
-        b.drinks.append(Drink(jsonDrink['name'], list(jsonDrink['ingredients'])))
+        b.drinks.append(Drink.fromJson(jsonDrink))
         storeDrinks(b.drinks)
         return {'success': 'Drink added.' }, 200
 
