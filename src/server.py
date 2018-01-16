@@ -115,7 +115,7 @@ class DispenserListAPI(Resource):
 
         try:
             measure = Unit.fromJson(remaining)
-        except e:
+        except Error as e:
             return {'error': str(e)}, 403
 
         b.addDispenser(name, dispenser_type, index, measure)
