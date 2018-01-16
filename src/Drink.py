@@ -31,6 +31,7 @@ class Drink():
 
     @classmethod
     def fromJson(cls, json):
+        print('json:' + str(json))
         print('A')
         self.name = json['name']
         print('B')
