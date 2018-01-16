@@ -12,6 +12,7 @@ class Ingredient():
     def fromJson(cls, json):
         print('json:' + str(json))
         print(type(json))
+        print('maybe: ' + str(json.get('name')))
         name = json['name']
         print('Name is: ' + str(name))
         measure = Unit.fromJson(json['measure'])
