@@ -39,12 +39,11 @@ class Unit():
         amount = int(json['amount'])
 
         if name == 'shots':
-            constructor = Shot.__init__
+            return Shot(amount)
         elif name == 'mils':
-            constructor = Mils.__init__
+            return Mil(amount)
 
-        return constructor(amount)
-
+            
 class Shot(Unit):
     """docstring for Shot."""
     def __init__(self, amount):
