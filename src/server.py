@@ -87,7 +87,7 @@ class DispenserListAPI(Resource):
         self.reqparse.add_argument('name',      type=str, required=True, location='json')
         self.reqparse.add_argument('disp_type', type=str, required=True, location='json')
         self.reqparse.add_argument('index',     type=int, required=True, location='json')
-        self.reqparse.add_argument('remaining', type=int, required=True, location='json')
+        self.reqparse.add_argument('remaining', type=dict, required=True, location='json')
 
         super(self.__class__, self).__init__()
 
@@ -105,7 +105,7 @@ class DispenserListAPI(Resource):
         name           = jsonDispenser['name']
         dispenser_type = jsonDispenser['disp_type']
         index          = int(jsonDispenser['index'])
-        remaining      = int(jsonDispenser['remaining'])
+        remaining      = jsonDispenser['remaining']
 
         if (not (0 <= index < len(constants.DISPENSER_LOCATIONS))):
             return {'error': 'Invalid index. Enter 0-' + str(len(constants.DISPENSER_LOCATIONS)) }, 403
