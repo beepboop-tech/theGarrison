@@ -33,10 +33,12 @@ class Drink():
     def fromJson(cls, json):
         print('json:' + str(json))
         print('A')
-        self.name = json['name']
+        name = json['name']
         print('B')
-        self.ingredients = [fromJson(i) for i in json['ingredients']]
+        ingredients = [fromJson(i) for i in json['ingredients']]
         print('C')
+
+        return cls(name, ingredients)
 
 
 def loadDrinks(pickle_file = 'pickles/drinks.pickle'):
