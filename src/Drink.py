@@ -11,7 +11,7 @@ class Ingredient():
     @classmethod
     def fromJson(cls, json):
         print('json:' + str(json))
-        print('D')
+        print('D: ' + str(json['name']))
         name = json['name']
         print('E')
         measure = Unit.fromJson(json['measure'])
