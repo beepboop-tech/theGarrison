@@ -107,6 +107,8 @@ class DispenserListAPI(Resource):
         index          = int(jsonDispenser['index'])
         remaining      = jsonDispenser['remaining']
 
+        print('remaining: ' + str(remaining))
+
         if (not (0 <= index < len(constants.DISPENSER_LOCATIONS))):
             return {'error': 'Invalid index. Enter 0-' + str(len(constants.DISPENSER_LOCATIONS)) }, 403
 

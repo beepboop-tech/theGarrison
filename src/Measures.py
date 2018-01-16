@@ -36,14 +36,18 @@ class Unit():
     @classmethod
     def fromJson(json):
         name = json['unit']
+        print('name: ' + name)
         amount = int(json['amount'])
+        print('amount: ' + amount)
 
         if name == 'shots':
             return Shot(amount)
         elif name == 'mils':
             return Mil(amount)
+        else:
+            raise NotImplementedError
 
-            
+
 class Shot(Unit):
     """docstring for Shot."""
     def __init__(self, amount):
