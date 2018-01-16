@@ -106,7 +106,7 @@ class DispenserListAPI(Resource):
 
 
         name           = jsonDispenser['name']
-        # dispenser_type = jsonsDispenser['type']
+        #dispenser_type = jsonsDispenser['type']
         dispenser_type = 'optic'
         index          = int(jsonDispenser['index'])
         remaining      = int(jsonDispenser['remaining'])
@@ -119,7 +119,7 @@ class DispenserListAPI(Resource):
         if (dispenser_type not in ['pump', 'optic']):
             return {'error': 'Invalid dispenser type'}, 403
 
-        b.addDispenser(name, dispenser_type, index, remaining)
+        #b.addDispenser(name, dispenser_type, index, remaining)
 
         return {'sucess': 'Added the new dispenser'}, 200
 
