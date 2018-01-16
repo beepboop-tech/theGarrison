@@ -84,7 +84,7 @@ class DispenserListAPI(Resource):
         self.reqparse = reqparse.RequestParser()
 
         self.reqparse.add_argument('name',      type=str, required=True, location='json')
-        self.reqparse.add_argument('disp_type',      type=str, required=True, location='json')
+        self.reqparse.add_argument('disp_type', type=str, required=True, location='json')
         self.reqparse.add_argument('index',     type=int, required=True, location='json')
         self.reqparse.add_argument('remaining', type=int, required=True, location='json')
 
@@ -98,20 +98,13 @@ class DispenserListAPI(Resource):
         return {'dispensers': ret}, 200
 
     def post(self):
-        print('begining')
         global b
         jsonDispenser = self.reqparse.parse_args()
 
-        print(jsonDispenser)
-
-
         name           = jsonDispenser['name']
-        dispenser_type = jsonsDispenser['disp_type']
-        # dispenser_type = 'optic'
+        dispenser_type = jsonDispenser['disp_type']
         index          = int(jsonDispenser['index'])
         remaining      = int(jsonDispenser['remaining'])
-
-        print('here')
 
         if (not (0 <= index < len(constants.DISPENSER_LOCATIONS))):
             return {'error': 'Invalid index. Enter 0-' + str(len(constants.DISPENSER_LOCATIONS)) }, 403
@@ -119,7 +112,7 @@ class DispenserListAPI(Resource):
         if (dispenser_type not in ['pump', 'optic']):
             return {'error': 'Invalid dispenser type'}, 403
 
-        #b.addDispenser(name, dispenser_type, index, remaining)
+        b.addDispenser(name, dispenser_type, index, remaining)
 
         return {'sucess': 'Added the new dispenser'}, 200
 
