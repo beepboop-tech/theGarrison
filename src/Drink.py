@@ -35,7 +35,7 @@ class Drink():
         print('A')
         name = json['name']
         print('B')
-        ingredients = [fromJson(i) for i in json['ingredients']]
+        ingredients = [Ingredient.fromJson(i) for i in json['ingredients']]
         print('C')
 
         return cls(name, ingredients)
