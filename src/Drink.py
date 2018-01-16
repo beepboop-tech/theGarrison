@@ -1,6 +1,5 @@
 import pickle
 import os
-from typings  import List
 from Measures import Unit
 
 
@@ -11,7 +10,7 @@ class Ingredient():
 
 
 class Drink():
-    def __init__(self, name, ingredients: List[Ingredient]):
+    def __init__(self, name, ingredients):
         self.name        = name
         self.ingredients = ingredients
 
