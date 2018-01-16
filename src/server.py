@@ -98,6 +98,7 @@ class DispenserListAPI(Resource):
         return {'dispensers': ret}, 200
 
     def post(self):
+        print('begining')
         global b
         jsonDispenser = self.reqparse.parse_args()
 
