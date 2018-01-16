@@ -8,7 +8,7 @@ vr = {
 
 
 test_disp = {'name': 'test',
-             'type': 'optic',
+             'disp_type': 'optic',
              'index': 2,
              'remaining': 100}
 
