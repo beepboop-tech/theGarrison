@@ -28,8 +28,8 @@ class DrinkListAPI(Resource):
         global b
         menu = []
         for drink in b.drinks:
-            #if b.canMake(drink):
-            menu.append(drink.name)
+            if b.canMake(drink):
+                menu.append(drink.name)
         return {'menu': menu}, 200
 
     def post(self):
