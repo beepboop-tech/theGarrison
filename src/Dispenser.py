@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import pickle
 import constants
 import os
-from Measures import Unit
+from Measures import Unit, Shot
 
 # Defines the Super Class for Optics and pumps, as well as mechanisms
 # for dispensers to keep track of how much fluid they have remaning
