@@ -102,6 +102,9 @@ class DispenserListAPI(Resource):
         global b
         jsonDispenser = self.reqparse.parse_args()
 
+        print(jsonDispenser)
+
+
         name           = jsonDispenser['name']
         dispenser_type = jsonsDispenser['type']
         index          = int(jsonDispenser['index'])
