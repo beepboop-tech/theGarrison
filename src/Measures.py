@@ -34,7 +34,7 @@ class Unit():
             raise TypeError("Types of units in binary operation were not the same")
 
     @classmethod
-    def fromJson(json):
+    def fromJson(cls, json):
         name = json['unit']
         print('name: ' + name)
         amount = int(json['amount'])
