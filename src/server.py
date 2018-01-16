@@ -3,6 +3,7 @@ from flask_restful    import Api, Resource, reqparse, abort
 from BarTender        import BarTender
 from Drink            import Drink, storeDrinks
 from Dispenser        import Dispenser, storeDispensers
+from Measures         import Unit
 
 import constants
 import os
@@ -112,9 +113,12 @@ class DispenserListAPI(Resource):
         if (dispenser_type not in ['pump', 'optic']):
             return {'error': 'Invalid dispenser type'}, 403
 
-        print ('B4')
-        b.addDispenser(name, dispenser_type, index, remaining)
-        print ('After')
+        try:
+            measure = Unit.fromJson(remaining)
+        except:
+            return {'error': 'Could not parse remaining'}, 403
+
+        b.addDispenser(name, dispenser_type, index, measure)
 
         return {'sucess': 'Added the new dispenser'}, 200
 

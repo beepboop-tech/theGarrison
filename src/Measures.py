@@ -33,6 +33,17 @@ class Unit():
         if not (type(self) == type(other)):
             raise TypeError("Types of units in binary operation were not the same")
 
+    @classmethod
+    def fromJson(json):
+        name = json['unit']
+        amount = int(json['amount'])
+
+        if name == 'shots':
+            constructor = Shot.__init__
+        elif name == 'mils':
+            constructor = Mils.__init__
+
+        return constructor(amount)
 
 class Shot(Unit):
     """docstring for Shot."""

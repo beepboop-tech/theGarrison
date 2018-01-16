@@ -1,8 +1,17 @@
 import pickle
 import os
+from typing import List
+from Measures import Unit
+
+
+class Ingredient():
+    def __init__(self, name, measure: Unit):
+        self.name    = name
+        self.measure = measure
+
 
 class Drink():
-    def __init__(self, name, ingredients):
+    def __init__(self, name, ingredients: List[Ingredient]):
         self.name        = name
         self.ingredients = ingredients
 
@@ -28,8 +37,3 @@ def storeDrinks(drinks, pickle_file = 'pickles/drinks.pickle'):
 def generateDrinks():
     drinks = []
     storeDrinks(drinks)
-
-class Ingredient():
-    def __init__(self, name, measure):
-        self.name    = name
-        self.measure = measure

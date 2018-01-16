@@ -6,6 +6,7 @@ from Optic     import Optic
 from Pump      import Pump
 from Impeller  import Impeller
 from Drink     import Drink, loadDrinks, storeDrinks
+from Measures  import Unit
 import constants
 
 
@@ -37,10 +38,10 @@ class BarTender(TrolleyObserver, ActuatorObserver):
             return False
         for ingredient in drink:
             for dispenser in self.dispensers:
-                if (dispenser.name == ingredient):
+                if (dispenser.name == ingredient.name):
                     self.trolley.moveTo(dispenser.position)
-                    dispenser.dispense(1)
-                    dispenser.hasUsed(1)
+                    dispenser.dispense(ingredient.measure)
+                    dispenser.hasUsed(ingredient.measure)
 
         self.trolley.goHome()
         storeDispensers(self.dispensers)
@@ -62,23 +63,15 @@ class BarTender(TrolleyObserver, ActuatorObserver):
         self.trolley.moveTo(0)
         self.trolley.stepper.motor.free()
 
-    def addDispenser(self, name, dispenser_type, index, remaining):
-        print ('BBB')
-
+    def addDispenser(self, name, dispenser_type, index, remaining: Unit):
         if (dispenser_type == 'optic'):
-            print('A')
             new_dispenser = Optic(constants.DISPENSER_LOCATIONS[index], name, remaining, self.actuator)
-            print('B')
         elif (dispenser_type == 'pump'):
             impeller      = Impeller(constants.PUMP_TO_PIN[index])
             new_dispenser = Pump(constants.DISPENSER_LOCATIONS[index], name, remaining, impeller)
 
-        print('C')
         self.dispensers[index] = new_dispenser
-        print('D')
         storeDispensers(self.dispensers)
-        print('E')
-
 
 
     # Trolley Observer
