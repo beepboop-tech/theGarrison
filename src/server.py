@@ -84,7 +84,7 @@ class DispenserListAPI(Resource):
         self.reqparse = reqparse.RequestParser()
 
         self.reqparse.add_argument('name',      type=str, required=True, location='json')
-        self.reqparse.add_argument('type',      type=str, required=True, location='json')
+        # self.reqparse.add_argument('type',      type=str, required=True, location='json')
         self.reqparse.add_argument('index',     type=int, required=True, location='json')
         self.reqparse.add_argument('remaining', type=int, required=True, location='json')
 
@@ -106,7 +106,8 @@ class DispenserListAPI(Resource):
 
 
         name           = jsonDispenser['name']
-        dispenser_type = jsonsDispenser['type']
+        # dispenser_type = jsonsDispenser['type']
+        dispenser_type = 'optic'
         index          = int(jsonDispenser['index'])
         remaining      = int(jsonDispenser['remaining'])
 
