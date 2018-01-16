@@ -35,15 +35,8 @@ class Unit():
 
     @classmethod
     def fromJson(cls, json):
-        print('JSON: ' + str(json))
-        print('in from json')
         name = json['unit']
-        print('name: ' + name)
-        print('hereerererererere')
-        print('json is: ' + str(json))
-        print('maybe: ' + str(json['amount']))
         amount = int(json['amount'])
-        print('amount: ' + str(amount))
 
         if name == 'shots':
             return Shot(amount)
