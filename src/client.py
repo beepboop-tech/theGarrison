@@ -6,6 +6,11 @@ vr = {
     'ingredients': ['vodka', 'gin']
 }
 
+test_disp = {'name': 'test',
+             'type': 'optic',
+             'index': 2,
+             'remaining': 100}
+
 
 # menu = requests.get('http://10.11.12.41:5000/drinks', json=vr).json()
 # menu = requests.get('http://10.11.12.41:5000/drinks/peaky-badger', json=vr).json()
@@ -13,7 +18,8 @@ vr = {
 
 j = {'name': 'test', 'index': 1, 'remaining': 100}
 
-menu = requests.post('http://10.11.12.41:5000/shutdown').json()
+# menu = requests.post('http://10.11.12.41:5000/shutdown').json()
+menu = requests.post('http://10.11.12.41:5000/dispensers', json=test_disp).json()
 # menu = requests.get('http://10.11.12.41:5000/dispensers', json=j).json()
 print(menu)
 
