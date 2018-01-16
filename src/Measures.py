@@ -38,6 +38,7 @@ class Unit():
         print('in from json')
         name = json['unit']
         print('name: ' + name)
+        print('maybe: ' + json['amount'])
         amount = int(json['amount'])
         print('amount: ' + amount)
 
