@@ -10,6 +10,7 @@ class Ingredient():
 
     @classmethod
     def fromJson(cls, json):
+        print('json:' + str(json))
         print('D')
         name = json['name']
         print('E')
@@ -33,10 +34,7 @@ class Drink():
 
     @classmethod
     def fromJson(cls, json):
-        print('json:' + str(json))
-        print('A')
         name = json['name']
-        print('B')
         ingredients = [Ingredient.fromJson(i) for i in json['ingredients']]
         print('C')
 
