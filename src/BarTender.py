@@ -50,9 +50,9 @@ class BarTender(TrolleyObserver, ActuatorObserver):
     def canMake(self, drink):
         for ingredient in drink:
             hasIngredient = False
-            for dispenser in self.dispensers:
-                if (ingredient.name == dispenser.name) and (dispenser.has(ingredient.measure)):
-                    hasIngredient = True
+            # for dispenser in self.dispensers:
+            #     if (ingredient.name == dispenser.name) and (dispenser.has(ingredient.measure)):
+            hasIngredient = True
             if not hasIngredient:
                 return False
         return True
