@@ -11,5 +11,5 @@ class Optic(Dispenser):
         Presses the actuator the required number of times.
         Uses the `__iter__` method of the unit, so `range` not needed.
         """
-        for _ in amount:
+        for _ in range(0, amount):
             self.actuator.press()

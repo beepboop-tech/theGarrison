@@ -2,10 +2,16 @@
 # constants
 
 # GPIO PINS
+PUMP_0                          = None
 PUMP_1                          = None
 PUMP_2                          = None
 PUMP_3                          = None
-PUMP_4                          = None
+
+PUMP_RELAY_PINS = [ PUMP_0,
+                    PUMP_1,
+                    PUMP_2,
+                    PUMP_3]
+
 ACTUATOR_UP                     = 1
 ACTUATOR_DOWN                   = 0
 
@@ -24,15 +30,32 @@ HOME_POSITION                   = 45.5
 
 
 # Dispenser Locations
-DISPENSER_0_LOC                 = 0
-DISPENSER_1_LOC                 = 18
-DISPENSER_2_LOC                 = 36
-DISPENSER_3_LOC                 = 54
-DISPENSER_4_LOC                 = 72
-DISPENSER_5_LOC                 = 88
+# Left
+OPTIC_0_LOC                 = 0
+PUMP_0_LOC                  = None
+OPTIC_1_LOC                 = 18
+PUMP_1_LOC                  = None
+OPTIC_2_LOC                 = 36
+# Center
+OPTIC_3_LOC                 = 54
+PUMP_2_LOC                  = None
+OPTIC_4_LOC                 = 72
+PUMP_3_LOC                  = None
+OPTIC_5_LOC                 = 88
+# Right
+
+PUMP_TO_PIN = { 1: PUMP_0,
+                3: PUMP_1,
+                6: PUMP_2,
+                8: PUMP_3 }
+
 DISPENSER_LOCATIONS             = [ DISPENSER_0_LOC,
+                                    PUMP_0_LOC,
                                     DISPENSER_1_LOC,
+                                    PUMP_1_LOC,
                                     DISPENSER_2_LOC,
                                     DISPENSER_3_LOC,
+                                    PUMP_2_LOC,
                                     DISPENSER_4_LOC,
+                                    PUMP_3_LOC,
                                     DISPENSER_5_LOC]

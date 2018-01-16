@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 import time
-import constants
+import constants 
 
 class Impeller():
     def __init__(self, pin):
@@ -22,12 +22,12 @@ class Impeller():
         self.turnOff()
 
     def turnOn(self):
-        # Turn on the pump relay using self.pin
+        # TODO: Turn on the pump relay using self.pin
         for observer in self.observers:
             observer.impellerOn(self)
 
     def turnOff(self):
-        # Turn off the pump relay using self.pin
+        # TODO: Turn off the pump relay using self.pin
         for observer in self.observers:
             observer.impellerOff(self)
 

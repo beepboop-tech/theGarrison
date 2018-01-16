@@ -21,7 +21,7 @@ class TestMeasuresMethods(unittest.TestCase):
         b = Shot(2)
         c = a + b
 
-        self.assertEqual(c.name, "shot")
+        self.assertEqual(c.name, "shots")
 
     # Tests that a type error is thrown when two units of different types are
     # subtracted.
@@ -50,7 +50,7 @@ class TestMeasuresMethods(unittest.TestCase):
         b = Shot(2)
         c = a - b
 
-        self.assertEqual(c.name, "shot")
+        self.assertEqual(c.name, "shots")
 
     # Tests that a type error is thrown when two units of different types are
     # subtracted.
@@ -110,6 +110,15 @@ class TestMeasuresMethods(unittest.TestCase):
         for _ in a:
             lst.append("x")
         self.assertEqual(len(lst), 5)
+
+
+    ##################
+    # String Tests   #
+    ##################
+
+    def testString(self):
+        a   = Shot(5)
+        self.assertEqual('5 shots', str(a))
 
 
 

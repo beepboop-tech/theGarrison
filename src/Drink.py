@@ -16,7 +16,7 @@ class Drink():
 def loadDrinks(pickle_file = 'pickles/drinks.pickle'):
     if (not os.path.isfile(pickle_file)):
         generateDrinks()
-        loadDrinks()
+
     with open(pickle_file, 'rb') as handle:
          drinks = pickle.load(handle)
     return drinks
@@ -28,3 +28,8 @@ def storeDrinks(drinks, pickle_file = 'pickles/drinks.pickle'):
 def generateDrinks():
     drinks = []
     storeDrinks(drinks)
+
+class Ingredient():
+    def __init__(self, name, measure):
+        self.name    = name
+        self.measure = measure
