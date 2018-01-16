@@ -53,7 +53,7 @@ class BarTender(TrolleyObserver, ActuatorObserver):
             hasIngredient = False
             for dispenser in self.dispensers:
                 print(dispenser.name)
-                if (ingredient.name == dispenser.name) :# and (dispenser.has(ingredient.measure)):
+                if (ingredient.name == dispenser.name) and (dispenser.has(ingredient.measure)):
                     hasIngredient = True
             if not hasIngredient:
                 return False
