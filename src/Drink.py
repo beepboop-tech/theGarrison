@@ -8,6 +8,11 @@ class Ingredient():
         self.name    = name
         self.measure = measure
 
+    @classmethod
+    def fromJson(cls, json):
+        self.name = json['name']
+        self.measure = Unit.fromJson(json['measure'])
+
 
 class Drink():
     def __init__(self, name, ingredients):
@@ -20,6 +25,12 @@ class Drink():
 
     def __iter__(self):
         return self.ingredients.__iter__()
+
+    @classmethod
+    def fromJson(cls, json):
+        self.name = json['name']
+        self.ingredients = [fromJson(i) for i in json['ingredients']]
+
 
 def loadDrinks(pickle_file = 'pickles/drinks.pickle'):
     if (not os.path.isfile(pickle_file)):
