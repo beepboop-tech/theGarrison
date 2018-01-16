@@ -28,10 +28,10 @@ test_disp = {'name': 'test',
 # menu = requests.get('http://10.11.12.41:5000/drinks/peaky-badger', json=vr).json()
 # print(menu)
 
-# menu = requests.post('http://10.11.12.41:5000/shutdown').json()
+menu = requests.post('http://10.11.12.41:5000/shutdown').json()
 # menu = requests.post('http://10.11.12.41:5000/dispensers', json=test_disp).json()
-# menu = requests.get('http://10.11.12.41:5000/dispensers', json=j).json()
-# print(menu)
+# menu = requests.get('http://10.11.12.41:5000/dispensers').json()
+print(menu)
 
 # print(requests.put('http://127.0.0.1:5000/queue/not-a-drink').json())
 # print(requests.post('http://10.11.12.41:5000/glass').json())

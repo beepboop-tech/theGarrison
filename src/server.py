@@ -95,7 +95,7 @@ class DispenserListAPI(Resource):
         global b
         ret = {}
         for i, d in enumerate(b.dispensers):
-            ret['d'+str(i)] =  {'name': d.name, 'remaining': d.amount}
+            ret['d'+str(i)] =  {'name': d.name, 'remaining': str(d.amount)}
         return {'dispensers': ret}, 200
 
     def post(self):
