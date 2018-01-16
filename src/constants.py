@@ -49,13 +49,13 @@ PUMP_TO_PIN = { 1: PUMP_0,
                 6: PUMP_2,
                 8: PUMP_3 }
 
-DISPENSER_LOCATIONS             = [ DISPENSER_0_LOC,
+DISPENSER_LOCATIONS             = [ OPTIC_0_LOC,
                                     PUMP_0_LOC,
-                                    DISPENSER_1_LOC,
+                                    OPTIC_1_LOC,
                                     PUMP_1_LOC,
-                                    DISPENSER_2_LOC,
-                                    DISPENSER_3_LOC,
+                                    OPTIC_2_LOC,
+                                    OPTIC_3_LOC,
                                     PUMP_2_LOC,
-                                    DISPENSER_4_LOC,
+                                    OPTIC_4_LOC,
                                     PUMP_3_LOC,
-                                    DISPENSER_5_LOC]
+                                    OPTIC_5_LOC]
