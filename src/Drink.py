@@ -11,10 +11,12 @@ class Ingredient():
     @classmethod
     def fromJson(cls, json):
         print('D')
-        self.name = json['name']
+        name = json['name']
         print('E')
-        self.measure = Unit.fromJson(json['measure'])
+        measure = Unit.fromJson(json['measure'])
         print('F')
+
+        return cls(name, measure)
 
 
 class Drink():
