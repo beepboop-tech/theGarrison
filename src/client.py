@@ -24,8 +24,8 @@ test_disp = {'name': 'test',
              }}
 
 
-menu = requests.get('http://10.11.12.41:5000/drinks', json=vr).json()
-#menu = requests.get('httpb://10.11.12.41:5000/drinks/peaky-badger', json=vr).json()
+menu = requests.post('http://10.11.12.41:5000/drinks', json=vr).json()
+# menu = requests.get('httpb://10.11.12.41:5000/drinks/peaky-badger', json=vr).json()
 print(menu)
 
 # menu = requests.post('http://10.11.12.41:5000/shutdown').json()

@@ -10,8 +10,11 @@ class Ingredient():
 
     @classmethod
     def fromJson(cls, json):
+        print('D')
         self.name = json['name']
+        print('E')
         self.measure = Unit.fromJson(json['measure'])
+        print('F')
 
 
 class Drink():
@@ -28,8 +31,11 @@ class Drink():
 
     @classmethod
     def fromJson(cls, json):
+        print('A')
         self.name = json['name']
+        print('B')
         self.ingredients = [fromJson(i) for i in json['ingredients']]
+        print('C')
 
 
 def loadDrinks(pickle_file = 'pickles/drinks.pickle'):
