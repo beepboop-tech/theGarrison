@@ -112,7 +112,7 @@ class DispenserListAPI(Resource):
         if (dispenser_type not in ['pump', 'optic']):
             return {'error': 'Invalid dispenser type'}, 403
 
-        # b.addDispenser(name, dispenser_type, index, remaining)
+        b.addDispenser(name, dispenser_type, index, remaining)
 
         return {'sucess': 'Added the new dispenser'}, 200
 

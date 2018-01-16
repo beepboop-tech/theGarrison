@@ -64,13 +64,18 @@ class BarTender(TrolleyObserver, ActuatorObserver):
 
     def addDispenser(name, dispenser_type, index, remaining):
         if (dispenser_type == 'optic'):
+            print('A')
             new_dispenser = Optic(constants.DISPENSER_LOCATIONS[index], name, remaining, self.actuator)
+            print('B')
         elif (dispenser_type == 'pump'):
             impeller      = Impeller(constants.PUMP_TO_PIN[index])
             new_dispenser = Pump(constants.DISPENSER_LOCATIONS[index], name, remaining, impeller)
 
+        print('C')
         self.dispensers[index] = new_dispenser
+        print('D')
         storeDispensers(self.dispensers)
+        print('E')
 
 
 
