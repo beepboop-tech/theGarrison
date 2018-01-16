@@ -62,7 +62,7 @@ class BarTender(TrolleyObserver, ActuatorObserver):
         self.trolley.moveTo(0)
         self.trolley.stepper.motor.free()
 
-    def addDispenser(name, dispenser_type, index, remaining):
+    def addDispenser(self, name, dispenser_type, index, remaining):
         print ('BBB')
 
         if (dispenser_type == 'optic'):
