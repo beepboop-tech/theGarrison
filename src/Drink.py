@@ -32,8 +32,12 @@ class Drink():
         for ingredient in self.ingredients:
             string = string + str(ingredient.measure) + ' ' + ingredient.name + ', '
 
-        return string[:-1] # removes the last comma
+        return string[:-2] # removes the last comma and space
+
         
+    def pretty_name(self):
+        return self.name.replace('-', ' ').capitalize()
+
     @classmethod
     def fromJson(cls, json):
         name = json['name']
