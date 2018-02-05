@@ -153,7 +153,7 @@ def index():
         name = drink.name
         pretty_ing = ''
         for ing in drink.ingredients:
-            pretty_ing = pretty_ing + str(ing) + ', '
+            pretty_ing = pretty_ing + str(ing.name) + ', '
         drinks_list.append([name, pretty_ing])
 
 
