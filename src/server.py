@@ -1,5 +1,6 @@
-from flask            import Flask, g, render_template
+from flask            import Flask, g, render_template, redirect, url_for, request, flash
 from flask_restful    import Api, Resource, reqparse, abort
+from flask_bootstrap  import Bootstrap
 from BarTender        import BarTender
 from Drink            import Drink, storeDrinks
 from Dispenser        import Dispenser, storeDispensers
@@ -11,6 +12,9 @@ import os
 
 app  = Flask(__name__)
 api  = Api(app)
+
+Bootstrap(app)
+
 
 
 b = BarTender()
@@ -138,10 +142,9 @@ api.add_resource(ShutdownAPI,      '/shutdown',   endpoint='shutdown')
 api.add_resource(DispenserListAPI, '/dispensers', endpoint='dispensers')
 
 
-@app.route('/', methods=['GET'])
-def homepage():
-    # return render_template('index.html')
-    return 'This will be the home page'
+@app.route('/')
+def index():
+    return render_template('index.html', drink_list=drinks_list())
 
 if __name__ == '__main__':
     app.run(host= '0.0.0.0')

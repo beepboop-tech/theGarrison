@@ -1,0 +1,37 @@
+{% extends 'admin/master.html' %}
+
+{% block title %}
+Printers
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
+{% endblock %}
+
+{% block body %}
+
+<div class="table-responsive">
+  <table class="table table-bordered table-responsive">
+    <thead>
+      <tr>
+        <th>Jobname</th>
+        <th>Username</th>
+        <th>Location</th>
+        <th>Time remaining</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for job in job_list %}
+         <tr>
+             <td>{{ job[0] }}</td>
+             <td>{{ job[1] }}</td>
+             <td>{{ job[2] }}</td>
+             <td>{{ job[3] }}</td>
+         </tr>
+       {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock body %}

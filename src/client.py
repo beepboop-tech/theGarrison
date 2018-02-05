@@ -1,37 +1,58 @@
 import requests
-from Dispenser import Dispenser
+# from Dispenser import Dispenser
 
-vr = {
-    'name':'peaky-badger',
+d = {
+    'name':'gin',
     'ingredients': [
             {
-                'name': 'test',
+                'name': 'gin',
                 'measure': {
                     'unit': 'shots',
                     'amount':1
                 }
             }
+
         ]
 }
 
 
-test_disp = {'name': 'test',
+
+
+gin = {'name': 'gin',
              'disp_type': 'optic',
-             'index': 2,
+             'index': 0,
              'remaining': {
                 'unit': 'shots',
-                'amount': 100
-             }}
+                'amount': 40
+             }
+        }
+
+amo = {'name': 'amo',
+          'disp_type': 'optic',
+          'index': 2,
+          'remaining': {
+             'unit': 'shots',
+             'amount': 20
+          }}
+
+rum = {'name': 'rum',
+          'disp_type': 'optic',
+          'index': 7,
+          'remaining': {
+             'unit': 'shots',
+             'amount': 30
+          }}
+
 
 
 # menu = requests.post('http://10.11.12.41:5000/drinks', json=vr).json()
-# menu = requests.get('http://10.11.12.41:5000/drinks', json=vr).json()
-# menu = requests.get('http://10.11.12.41:5000/drinks/peaky-badger', json=vr).json()
+# menu = requests.get('http://10.11.12.41:5000/drinks', json=d).json()
+menu = requests.post('http://10.11.12.41:5000/queue/gin').json()
 
 # menu = requests.post('http://10.11.12.41:5000/shutdown').json()
-# menu = requests.post('http://10.11.12.41:5000/dispensers', json=test_disp).json()
-menu = requests.get('http://10.11.12.41:5000/dispensers').json()
-print(menu)
+# menu = requests.get('http://10.11.12.41:5000/dispensers', json=rum).json()
+# menu = requests.post('http://10.11.12.41:5000/dispensers', json=gin).json()
+# print(menu)
 
 # print(requests.put('http://127.0.0.1:5000/queue/not-a-drink').json())
 # print(requests.post('http://10.11.12.41:5000/glass').json())
@@ -39,4 +60,4 @@ print(menu)
 # print(requests.put('http://127.0.0.1:5000/queue/Sex-on-the-Beach').json())
 # print(requests.put('http://127.0.0.1:5000/queue/Sex-on-the-Beach').json())
 
-# print(requests.post('http://10.11.12.41:5000/queue/peaky-badger').json())
+# print(requests.post('http://10.11.12.41:5000/queue/sex-on-the-beach').json())
