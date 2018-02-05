@@ -15,7 +15,6 @@ class Ingredient():
 
         return cls(name, measure)
 
-
 class Drink():
     def __init__(self, name, ingredients):
         self.name        = name
@@ -28,12 +27,21 @@ class Drink():
     def __iter__(self):
         return self.ingredients.__iter__()
 
+    def pretty_ingredients(self):
+        string = ''
+        for ingredient in self.ingredients:
+            string = string + str(ingredient.measure) + ' ' + ingredient.name + ', '
+
+        return string[:-1] # removes the last comma
+        
     @classmethod
     def fromJson(cls, json):
         name = json['name']
         ingredients = [Ingredient.fromJson(i) for i in json['ingredients']]
 
         return cls(name, ingredients)
+
+
 
 
 def loadDrinks(pickle_file = 'pickles/drinks.pickle'):
