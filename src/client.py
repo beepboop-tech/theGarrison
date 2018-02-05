@@ -47,9 +47,9 @@ rum = {'name': 'rum',
 
 # menu = requests.post('http://10.11.12.41:5000/drinks', json=vr).json()
 # menu = requests.get('http://10.11.12.41:5000/drinks', json=d).json()
-menu = requests.post('http://10.11.12.41:5000/queue/gin').json()
+# menu = requests.post('http://10.11.12.41:5000/queue/gin').json()
 
-# menu = requests.post('http://10.11.12.41:5000/shutdown').json()
+menu = requests.post('http://10.11.12.41:5000/shutdown').json()
 # menu = requests.get('http://10.11.12.41:5000/dispensers', json=rum).json()
 # menu = requests.post('http://10.11.12.41:5000/dispensers', json=gin).json()
 # print(menu)
