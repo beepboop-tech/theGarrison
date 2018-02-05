@@ -27,8 +27,9 @@ class Unit():
         return (self.amount == otherUnit.amount)
 
     def __str__(self):
+        if self.amount < 1:
+            return str(self.amount) +' '+ self.name + 's'
         return str(self.amount) +' '+ self.name
-
     def checkType(self, other):
         if not (type(self) == type(other)):
             raise TypeError("Types of units in binary operation were not the same")
@@ -49,10 +50,10 @@ class Unit():
 class Shot(Unit):
     """docstring for Shot."""
     def __init__(self, amount):
-        super(Shot, self).__init__(amount, "shots")
+        super(Shot, self).__init__(amount, "shot")
 
 
 class Mil(Unit):
     """docstring for Mil."""
     def __init__(self, amount):
-        super(Mil, self).__init__(amount, "mils")
+        super(Mil, self).__init__(amount, "mil")
