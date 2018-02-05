@@ -27,7 +27,7 @@ class Unit():
         return (self.amount == otherUnit.amount)
 
     def __str__(self):
-        if self.amount < 1:
+        if self.amount > 1:
             return str(self.amount) +' '+ self.name + 's'
         return str(self.amount) +' '+ self.name
     def checkType(self, other):
