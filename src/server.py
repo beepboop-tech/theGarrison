@@ -141,17 +141,25 @@ api.add_resource(GlassAPI,         '/glass',      endpoint='glass')
 api.add_resource(ShutdownAPI,      '/shutdown',   endpoint='shutdown')
 api.add_resource(DispenserListAPI, '/dispensers', endpoint='dispensers')
 
-def drinks_list():
-    lst = [
-        ['sex_on_the_beach', ['vodka', 'rum']],
-        ['gin and tonic', ['gin', 'tonic']],
-        ['vodka and coke', ['vodka', 'coke']]
-    ]
-    return lst
-    
+
+
 @app.route('/')
 def index():
-    return render_template('index.html', drink_list=drinks_list())
+    global b
+
+    drinks_list = []
+
+    for drink in b.drinks:
+        name = drink.name
+        pretty_ing = ''
+        for ing in drink.ingredients:
+            pretty_ing = pretty_ing + str(ing) + ', '
+        drinks_list.append([name, pretty_ing])
+
+
+
+
+    return render_template('index.html', drink_list=drinks_list
 
 if __name__ == '__main__':
     app.run(host= '0.0.0.0')
