@@ -150,11 +150,7 @@ def index():
     drinks_list = []
 
     for drink in b.drinks:
-        name = drink.name
-        pretty_ing = ''
-        for ing in drink.ingredients:
-            pretty_ing = pretty_ing + str(ing.name) + ', '
-        drinks_list.append([name, pretty_ing])
+        drinks_list.append([drink.name, drink.pretty_ingredients()])
 
 
 
